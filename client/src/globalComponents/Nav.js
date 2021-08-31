@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
 const Main = styled.div`
-  min-height: 50px;
-  max-height: 10vh;
+  min-height: 45px;
+  height: 5vh;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -25,7 +25,6 @@ const NavUnlisted = styled.ul`
     color: grey;
     margin: 0.2rem 0.8rem;
     font-size: 1.3rem;
-    // position: relative;
     list-style: none;
   }
 `;
@@ -39,7 +38,11 @@ const Nav = () => {
         </NavLink>
       </NavUnlisted>
       <NavUnlisted>
-        <a href="https://github.com/Frank-5850" target="_blank">
+        <a
+          href="https://github.com/Frank-5850"
+          target="_blank"
+          rel="noreferrer"
+        >
           <li>Github</li>
         </a>
       </NavUnlisted>
