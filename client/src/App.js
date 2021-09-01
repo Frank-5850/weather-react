@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getCoords } from "./utils/utils";
+import { getForecastByLocation } from "./utils/utils";
 import LandingPage from "./pages/LandingPage";
 import Video from "./globalComponents/Video";
 import landingVideo from "./assets/LandingPage.mp4";
@@ -22,7 +22,7 @@ function App() {
   const [currentWeather, setCurrentWeather] = useState();
 
   useEffect(() => {
-    getCoords(setData);
+    getForecastByLocation(setData, setCurrentWeather);
   }, []);
 
   return (
@@ -44,7 +44,7 @@ function App() {
           <Home>
             <SideBar>
               <Search />
-              <CurrentWeatherCard currentWeather={data?.current} />
+              <CurrentWeatherCard weather={currentWeather} />
               <History />
             </SideBar>
             <Body>

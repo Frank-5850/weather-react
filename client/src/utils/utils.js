@@ -1,24 +1,16 @@
 import axios from "axios";
 
-export const getCoords = (setData) => {
-  const success = (position) => {
+export const getForecastByLocation = (setData, setCurrentWeather) => {
+  navigator.geolocation.getCurrentPosition((data) => {
+    const lat = data.coords.latitude;
+    const lon = data.coords.longitude;
     axios
-      .get(
-        `/api?lat=${position.coords.latitude}&lon=${position.coords.longitude}`
-      )
+      .get(`/api?lat=${lat}&lon=${lon}`)
       .then((res) => setData(res.data))
       .catch((err) => console.log(err));
-  };
-
-  const error = () => {
-    alert("Sorry, no position available.");
-  };
-
-  const options = {
-    enableHighAccuracy: true,
-    maximumAge: 30000,
-    timeout: 27000,
-  };
-
-  navigator.geolocation.getCurrentPosition(success, error, options);
+    axios
+      .get(`/api/current?lat=${lat}&lon=${lon}`)
+      .then((res) => setCurrentWeather(res.data))
+      .catch((err) => console.log(err));
+  });
 };
