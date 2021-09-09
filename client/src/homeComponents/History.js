@@ -15,7 +15,7 @@ const HistoryCard = styled.div`
   height: 40%;
   width: 100%;
   display: flex;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
@@ -30,11 +30,11 @@ const HistoryCardHeader = styled.div`
   align-items: center;
 `;
 
-const HeaderTitle = styled.h2`
+const HeaderTitle = styled.h3`
   margin: 0;
 `;
 
-const HistoryCardTemp = styled.h3`
+const HistoryCardTemp = styled.h4`
   margin: 0;
 `;
 
