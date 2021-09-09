@@ -40,7 +40,7 @@ const HomeMain = styled.div`
   align-content: center;
 `;
 
-const Home = ({ currentWeather, data, setSearch, submitSearch }) => {
+const Home = ({ currentWeather, data, setSearch, submitSearch, history }) => {
   return (
     <HomeContainer>
       <HomeMain>
@@ -50,7 +50,7 @@ const Home = ({ currentWeather, data, setSearch, submitSearch }) => {
             submitSearch={submitSearch}
           />
           <CurrentWeatherCard weather={currentWeather} />
-          <History />
+          <History history={history && history} />
         </SideBar>
         <Body>
           <Date date={data?.current?.dt} />
