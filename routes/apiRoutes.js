@@ -47,4 +47,25 @@ const getCurrentWeather = (lat, lon) => {
   });
 };
 
+router.get("/api/search", async (req, res) => {
+  try {
+    res.json(await searchWeather(req.query.search));
+  } catch (err) {
+    res.json(err);
+  }
+});
+
+const searchWeather = (search) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const request = await axios.get(
+        `${urlTwo}?q=${search}&units=imperial&appid=${API}`
+      );
+      resolve(request.data);
+    } catch (err) {
+      reject(err);
+    }
+  });
+};
+
 module.exports = router;

@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import moment from "moment";
 
 const DateContainer = styled.div`
-  height: 10%;
+  height: 5%;
   width: 95%;
   display: flex;
   justify-content: center;
@@ -15,8 +16,10 @@ const DateContainer = styled.div`
   border: 1px solid rgba(255, 255, 255, 0.18);
 `;
 
-const Date = () => {
-  return <DateContainer>Date</DateContainer>;
+const Date = ({ date }) => {
+  const today = moment.unix(date).format("LLLL");
+
+  return <DateContainer>{date ? today : "Loading..."}</DateContainer>;
 };
 
 export default Date;

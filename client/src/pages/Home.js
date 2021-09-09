@@ -8,7 +8,7 @@ const HomeContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: black;
+  // background: black;
 `;
 
 const HomeMain = styled.div`

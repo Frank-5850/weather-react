@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const SearchForm = styled.form`
-  height: 10%;
+  height: 5%;
   width: 95%;
   display: flex;
   justify-content: center;
@@ -15,8 +15,23 @@ const SearchForm = styled.form`
   border: 1px solid rgba(255, 255, 255, 0.18);
 `;
 
-const Search = () => {
-  return <SearchForm>Search</SearchForm>;
+const SearchInput = styled.input`
+  height: 50%;
+  width: 90%;
+  border: none;
+  background: none;
+`;
+
+const Search = ({ onChange, submitSearch }) => {
+  return (
+    <SearchForm onSubmit={submitSearch}>
+      <SearchInput
+        onChange={onChange}
+        placeholder="Search by city name"
+        type="text"
+      />
+    </SearchForm>
+  );
 };
 
 export default Search;

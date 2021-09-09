@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import moment from "moment";
 
 const CurrentCardContainer = styled.div`
   height: 50%;
@@ -48,6 +49,7 @@ const CardIcon = styled.img.attrs((props) => ({
 const CardDescription = styled.h4`
   margin: 1px;
 `;
+
 const CardFooter = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -71,7 +73,7 @@ const DetailBox = styled.div`
   width: 45%;
   height: 20%;
   padding: 1px;
-  border: 0.5px solid black;
+  // border: 0.5px solid black;
 `;
 
 const DetailHeader = styled.span``;
@@ -79,8 +81,8 @@ const DetailHeader = styled.span``;
 const CurrentWeatherCard = ({ weather }) => {
   const [toggle, setToggle] = useState(false);
 
-  const sunrise = new Date(weather?.sys.sunrise).toLocaleTimeString("en-US");
-  const sunset = new Date(weather?.sys.sunset).toLocaleTimeString("en-US");
+  const sunrise = moment.unix(weather?.sys.sunrise).format("LT");
+  const sunset = moment.unix(weather?.sys.sunset).format("LT");
 
   const mainCard = (toggle) => {
     if (!toggle) {
@@ -90,7 +92,7 @@ const CurrentWeatherCard = ({ weather }) => {
             <Header>{weather?.name}</Header>
           </CardHeader>
           <CardBody>
-            <CardTemp>{Math.trunc(weather?.main.temp)} °F</CardTemp>
+            <CardTemp>{Math.trunc(weather?.main.temp)}°F</CardTemp>
             <CardIcon
               src={`http://openweathermap.org/img/wn/${weather?.weather[0].icon}@2x.png`}
             />
@@ -117,7 +119,7 @@ const CurrentWeatherCard = ({ weather }) => {
             <DetailContainer>
               <DetailBox>
                 <DetailHeader>Feels Like</DetailHeader>
-                <CardDescription>{weather?.main.feels_like} °F</CardDescription>
+                <CardDescription>{weather?.main.feels_like}°F</CardDescription>
               </DetailBox>
               <DetailBox>
                 <DetailHeader>Description</DetailHeader>
@@ -155,6 +157,7 @@ const CurrentWeatherCard = ({ weather }) => {
 
   return (
     <CurrentCardContainer>
+      {!weather && "loading"}
       {mainCard(toggle)}
       {moreDetails(toggle)}
     </CurrentCardContainer>

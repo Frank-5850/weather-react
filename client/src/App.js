@@ -1,6 +1,11 @@
 import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getForecastByLocation } from "./utils/utils";
+import {
+  getCurrentWeatherBySearch,
+  getForecastByLocation,
+  getForecastBySearch,
+} from "./utils/utils";
+// import axios from "axios";
 import LandingPage from "./pages/LandingPage";
 import Video from "./globalComponents/Video";
 import landingVideo from "./assets/LandingPage.mp4";
@@ -20,10 +25,22 @@ import HourlyForecast from "./homeComponents/HourlyForecast";
 function App() {
   const [data, setData] = useState();
   const [currentWeather, setCurrentWeather] = useState();
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     getForecastByLocation(setData, setCurrentWeather);
   }, []);
+
+  const onChange = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const submitSearch = (e) => {
+    console.log("hello");
+    e.preventDefault();
+    getCurrentWeatherBySearch(search, setCurrentWeather);
+    getForecastBySearch(currentWeather, setData);
+  };
 
   return (
     <Router>
@@ -43,14 +60,14 @@ function App() {
           <Nav /> */}
           <Home>
             <SideBar>
-              <Search />
+              <Search onChange={onChange} submitSearch={submitSearch} />
               <CurrentWeatherCard weather={currentWeather} />
               <History />
             </SideBar>
             <Body>
-              <Date />
-              <DailyForecast />
-              <HourlyForecast />
+              <Date date={data?.current?.dt} />
+              <HourlyForecast weather={data?.hourly} />
+              <DailyForecast weather={data?.daily?.slice(1)} />
             </Body>
           </Home>
         </Route>
