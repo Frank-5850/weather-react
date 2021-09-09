@@ -1,5 +1,14 @@
 import styled from "styled-components";
 import React from "react";
+import SideBar from "../homeComponents/Sidebar";
+import Body from "../homeComponents/Body";
+import Search from "../homeComponents/Search";
+import CurrentWeatherCard from "../homeComponents/CurrentWeatherCard";
+import History from "../homeComponents/History";
+import Date from "../homeComponents/Date";
+import DailyForecast from "../homeComponents/DailyForecast";
+import HourlyForecast from "../homeComponents/HourlyForecast";
+import { onChange } from "../utils/utils";
 
 const HomeContainer = styled.div`
   margin: 0;
@@ -31,10 +40,24 @@ const HomeMain = styled.div`
   align-content: center;
 `;
 
-const Home = ({ children }) => {
+const Home = ({ currentWeather, data, setSearch, submitSearch }) => {
   return (
     <HomeContainer>
-      <HomeMain>{children}</HomeMain>
+      <HomeMain>
+        <SideBar>
+          <Search
+            onChange={(e) => onChange(e, setSearch)}
+            submitSearch={submitSearch}
+          />
+          <CurrentWeatherCard weather={currentWeather} />
+          <History />
+        </SideBar>
+        <Body>
+          <Date date={data?.current?.dt} />
+          <HourlyForecast weather={data?.hourly} />
+          <DailyForecast weather={data?.daily?.slice(1)} />
+        </Body>
+      </HomeMain>
     </HomeContainer>
   );
 };

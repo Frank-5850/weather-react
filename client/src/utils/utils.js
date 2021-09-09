@@ -28,3 +28,27 @@ export const getForecastBySearch = async (currentWeather, setData) => {
     .then((res) => setData(res.data))
     .catch((err) => console.log(err));
 };
+
+export const onChange = (e, func) => {
+  func(e.target.value);
+};
+
+// export const searchSubmit = (
+//   e,
+//   current,
+//   forecast,
+//   search,
+//   setCurrentWeather,
+//   currentWeather,
+//   setData
+// ) => {
+//   e.preventDefault();
+//   current(search, setCurrentWeather);
+//   forecast(currentWeather, setData);
+// };
+
+// export const submitSearch = (e, func1, func2) => {
+//   e.preventDefault();
+//   func1();
+//   func2();
+// };
