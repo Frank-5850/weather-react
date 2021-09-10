@@ -50,7 +50,7 @@ const Home = ({ currentWeather, data, setSearch, submitSearch, history }) => {
             submitSearch={submitSearch}
           />
           <CurrentWeatherCard weather={currentWeather} />
-          <History history={history && history} />
+          <History history={history} />
         </SideBar>
         <Body>
           <Date date={data?.current?.dt} />

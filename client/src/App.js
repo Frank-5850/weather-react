@@ -4,11 +4,10 @@ import {
   getForecastByLocation,
   getCurrentWeatherBySearch,
   getForecastBySearch,
+  chooseVideo,
 } from "./utils/utils";
-// import axios from "axios";
 import LandingPage from "./pages/LandingPage";
 import Video from "./globalComponents/Video";
-import landingVideo from "./assets/LandingPage.mp4";
 import Nav from "./globalComponents/Nav";
 import Home from "./pages/Home";
 
@@ -35,7 +34,7 @@ function App() {
 
   return (
     <Router>
-      <Video src={landingVideo} />
+      <Video src={chooseVideo(currentWeather?.weather[0].main)} />
       <Nav />
       <Switch>
         <Route exact path="/" component={LandingPage} />
@@ -48,7 +47,7 @@ function App() {
             currentWeather={currentWeather}
             setSearch={setSearch}
             data={data}
-            history={history && history}
+            history={history}
           />
         </Route>
       </Switch>

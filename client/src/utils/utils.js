@@ -1,4 +1,12 @@
 import axios from "axios";
+import clear from "../assets/clearSkies.mp4";
+import clouds from "../assets/clouds.mp4";
+import showerRain from "../assets/showerRain.mp4";
+import rain from "../assets/rain.mp4";
+import thunderstorm from "../assets/thunderStorm.mp4";
+import snow from "../assets/snow.mp4";
+import mist from "../assets/mist.mp4";
+import landingPage from "../assets/LandingPage.mp4";
 
 export const getForecastByLocation = (setData, setCurrentWeather) => {
   navigator.geolocation.getCurrentPosition((data) => {
@@ -52,3 +60,24 @@ export const onChange = (e, func) => {
 //   func1();
 //   func2();
 // };
+
+export const chooseVideo = (condition) => {
+  switch (condition) {
+    case "Clear":
+      return clear;
+    case "Clouds":
+      return clouds;
+    case "Drizzle":
+      return showerRain;
+    case "Rain":
+      return rain;
+    case "Thunderstorm":
+      return thunderstorm;
+    case "Snow":
+      return snow;
+    case "Mist":
+      return mist;
+    default:
+      return landingPage;
+  }
+};
