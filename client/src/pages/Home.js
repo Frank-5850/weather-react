@@ -40,7 +40,16 @@ const HomeMain = styled.div`
   align-content: center;
 `;
 
-const Home = ({ currentWeather, data, setSearch, submitSearch, history }) => {
+const Home = ({
+  currentWeather,
+  data,
+  setSearch,
+  submitSearch,
+  history,
+  historySearch,
+  setCurrentLocation,
+  currentLocation,
+}) => {
   return (
     <HomeContainer>
       <HomeMain>
@@ -48,9 +57,11 @@ const Home = ({ currentWeather, data, setSearch, submitSearch, history }) => {
           <Search
             onChange={(e) => onChange(e, setSearch)}
             submitSearch={submitSearch}
+            setCurrentLocation={setCurrentLocation}
+            currentLocation={currentLocation}
           />
           <CurrentWeatherCard weather={currentWeather} />
-          <History history={history} />
+          <History historySearch={historySearch} history={history} />
         </SideBar>
         <Body>
           <Date date={data?.current?.dt} />

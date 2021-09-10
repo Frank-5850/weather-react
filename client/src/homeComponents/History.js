@@ -20,6 +20,7 @@ const HistoryCard = styled.div`
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
+  cursor: pointer;
 `;
 
 const HistoryCardHeader = styled.div`
@@ -57,7 +58,7 @@ const HistoryDescription = styled.h6`
   margin: 0;
 `;
 
-const History = ({ history }) => {
+const History = ({ history, historySearch }) => {
   const [searchedHistory, setSearchedHistory] = useState([]);
 
   useEffect(() => {
@@ -68,7 +69,7 @@ const History = ({ history }) => {
     <HistoryContainer>
       {searchedHistory &&
         searchedHistory.map((city, index) => (
-          <HistoryCard key={index}>
+          <HistoryCard key={index} onClick={(e) => historySearch(e, city.name)}>
             <HistoryCardHeader>
               <HeaderTitle>
                 {city.name}, {city.sys.country}
