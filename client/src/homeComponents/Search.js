@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { ImLocation2 } from "react-icons/im";
+import { getForecastByLocation } from "./../utils/utils";
 
 const SearchForm = styled.form`
   height: 5%;
@@ -28,14 +29,10 @@ const SearchButton = styled.div`
   justify-content: center;
   align-items: center;
   width: 10%;
+  cursor: pointer;
 `;
 
-const Search = ({
-  onChange,
-  submitSearch,
-  setCurrentLocation,
-  currentLocation,
-}) => {
+const Search = ({ onChange, submitSearch, setData, setCurrentWeather }) => {
   return (
     <SearchForm onSubmit={submitSearch}>
       <SearchInput
@@ -43,10 +40,12 @@ const Search = ({
         placeholder="Search by city name"
         type="text"
       />
-      <SearchButton onClick={() => setCurrentLocation(true)}>
+      <SearchButton
+        onClick={() => getForecastByLocation(setData, setCurrentWeather)}
+      >
         <ImLocation2
           style={{
-            color: currentLocation ? "blue" : "grey",
+            color: "blue",
             width: "30px",
             height: "20px",
           }}

@@ -16,11 +16,10 @@ function App() {
   const [currentWeather, setCurrentWeather] = useState();
   const [search, setSearch] = useState("");
   const [history, setHistory] = useState([]);
-  const [currentLocation, setCurrentLocation] = useState(true);
 
   useEffect(() => {
     getForecastByLocation(setData, setCurrentWeather);
-  }, [currentLocation]);
+  }, []);
 
   const submitSearch = async (e) => {
     e.preventDefault();
@@ -31,7 +30,6 @@ function App() {
       updatedHistory.shift();
     }
     setHistory(updatedHistory);
-    setCurrentLocation(false);
   };
 
   const historySearch = async (e, name) => {
@@ -43,7 +41,6 @@ function App() {
       updatedHistory.shift();
     }
     setHistory(updatedHistory);
-    setCurrentLocation(false);
   };
 
   return (
@@ -56,15 +53,12 @@ function App() {
           <Home
             submitSearch={submitSearch}
             setData={setData}
-            search={search}
             setCurrentWeather={setCurrentWeather}
             currentWeather={currentWeather}
             setSearch={setSearch}
             data={data}
             history={history}
             historySearch={historySearch}
-            setCurrentLocation={setCurrentLocation}
-            currentLocation={currentLocation}
           />
         </Route>
       </Switch>

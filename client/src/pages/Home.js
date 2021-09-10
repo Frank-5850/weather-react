@@ -47,8 +47,8 @@ const Home = ({
   submitSearch,
   history,
   historySearch,
-  setCurrentLocation,
-  currentLocation,
+  setData,
+  setCurrentWeather,
 }) => {
   return (
     <HomeContainer>
@@ -57,8 +57,8 @@ const Home = ({
           <Search
             onChange={(e) => onChange(e, setSearch)}
             submitSearch={submitSearch}
-            setCurrentLocation={setCurrentLocation}
-            currentLocation={currentLocation}
+            setData={setData}
+            setCurrentWeather={setCurrentWeather}
           />
           <CurrentWeatherCard weather={currentWeather} />
           <History historySearch={historySearch} history={history} />
