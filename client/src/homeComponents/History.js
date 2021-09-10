@@ -7,12 +7,18 @@ const HistoryContainer = styled.div`
   display: flex;
   flex-flow: column;
   justify-content: space-around;
-  align-items: center;
   margin: 10px;
 `;
 
+const Header = styled.h3`
+  margin: 0;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+`;
+
 const HistoryCard = styled.div`
-  height: 40%;
+  height: 35%;
   width: 100%;
   display: flex;
   box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.1);
@@ -67,6 +73,9 @@ const History = ({ history, historySearch }) => {
 
   return (
     <HistoryContainer>
+      <div>
+        <Header>History</Header>
+      </div>
       {searchedHistory &&
         searchedHistory.map((city, index) => (
           <HistoryCard key={index} onClick={(e) => historySearch(e, city.name)}>
