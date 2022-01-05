@@ -19,7 +19,7 @@ const SearchForm = styled.form`
 
 const SearchInput = styled.input`
   height: 50%;
-  width: 85%;
+  width: 80%;
   border: none;
   background: none;
 `;
@@ -28,28 +28,33 @@ const SearchButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 10%;
+  width: 15%;
   cursor: pointer;
+`;
+
+const SearchWord = styled.p`
+  font-size: 12px;
 `;
 
 const Search = ({ onChange, submitSearch, setData, setCurrentWeather }) => {
   return (
     <SearchForm onSubmit={submitSearch}>
+      <ImLocation2
+        style={{
+          cursor: "pointer",
+          color: "blue",
+          width: "30px",
+          height: "20px",
+        }}
+        onClick={() => getForecastByLocation(setData, setCurrentWeather)}
+      />
       <SearchInput
         onChange={onChange}
         placeholder="Search by city name"
         type="text"
       />
-      <SearchButton
-        onClick={() => getForecastByLocation(setData, setCurrentWeather)}
-      >
-        <ImLocation2
-          style={{
-            color: "blue",
-            width: "30px",
-            height: "20px",
-          }}
-        />
+      <SearchButton onClick={(e) => submitSearch(e)}>
+        <SearchWord>Search</SearchWord>
       </SearchButton>
     </SearchForm>
   );

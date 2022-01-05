@@ -39,7 +39,7 @@ const Nav = () => {
       </NavUnlisted>
       <NavUnlisted>
         <a
-          href="https://github.com/Frank-5850"
+          href="https://github.com/Frank-5850/weather-react"
           target="_blank"
           rel="noreferrer"
         >

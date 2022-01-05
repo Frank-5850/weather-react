@@ -73,9 +73,13 @@ const History = ({ history, historySearch }) => {
 
   return (
     <HistoryContainer>
-      <div>
-        <Header>History</Header>
-      </div>
+      {searchedHistory.length > 0 ? (
+        <div>
+          <Header>History</Header>
+        </div>
+      ) : (
+        <div></div>
+      )}
       {searchedHistory &&
         searchedHistory.map((city, index) => (
           <HistoryCard key={index} onClick={(e) => historySearch(e, city.name)}>
