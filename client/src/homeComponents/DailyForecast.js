@@ -85,7 +85,7 @@ const DailyForecast = ({ weather }) => {
             <Card key={index}>
               <CardDay>{getToday(weather.dt)}</CardDay>
               <CardIcon
-                src={`http://openweathermap.org/img/wn/${weather?.weather[0].icon}@2x.png`}
+                src={`http://openweathermap.org/img/wn/${weather?.weather?.[0].icon}@2x.png`}
               />
               <CardTemp>
                 {Math.trunc(weather.temp.day)}° /{" "}

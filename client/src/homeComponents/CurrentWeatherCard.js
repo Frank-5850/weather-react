@@ -94,9 +94,9 @@ const CurrentWeatherCard = ({ weather }) => {
           <CardBody>
             <CardTemp>{Math.trunc(weather?.main.temp)}°F</CardTemp>
             <CardIcon
-              src={`http://openweathermap.org/img/wn/${weather?.weather[0].icon}@2x.png`}
+              src={`http://openweathermap.org/img/wn/${weather?.weather?.[0].icon}@2x.png`}
             />
-            <CardDescription>{weather?.weather[0].main}</CardDescription>
+            <CardDescription>{weather?.weather?.[0].main}</CardDescription>
           </CardBody>
           <CardFooter>
             <CardButton onClick={() => setToggle(!toggle)}>
