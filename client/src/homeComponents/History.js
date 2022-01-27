@@ -91,10 +91,10 @@ const History = ({ history, historySearch }) => {
             </HistoryCardHeader>
             <HistoryCardBody>
               <HistoryIcon
-                src={`http://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png`}
+                src={`http://openweathermap.org/img/wn/${city?.weather[0].icon}@2x.png`}
               />
               <HistoryDescription>
-                {city.weather[0].description}
+                {city?.weather[0].description}
               </HistoryDescription>
             </HistoryCardBody>
           </HistoryCard>
