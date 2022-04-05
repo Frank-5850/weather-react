@@ -45,7 +45,7 @@ function App() {
 
   return (
     <Router>
-      {/* <Video src={chooseVideo(currentWeather?.weather[0]?.main)} /> */}
+      <Video src={chooseVideo(currentWeather?.weather[0]?.main)} />
       <Nav />
       <Switch>
         <Route exact path="/" component={LandingPage} />
